@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Bobo Kalonlarimiz</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+text-align:center;
+}
+
+header{
+font-size:55px;
+padding:35px;
+color:#6ad8ff;
+font-weight:bold;
+}
+
+#search{
+padding:15px;
+width:320px;
+font-size:18px;
+border-radius:10px;
+border:none;
+margin-bottom:30px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+padding:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.08);
+background:rgba(255,255,255,0.2);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.name{
+font-size:20px;
+margin-top:10px;
+color:#6ad8ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>Bobo Kalonlarimiz</header>
+
+<input type="text" id="search" placeholder="Bobo kalon nomini yozing..." onkeyup="searchPerson()">
+
+<div class="container" id="container"></div>
+
+<script>
+
+const bobolar = [
+
+"Alisher Navoiy",
+"Amir Temur",
+"Mirzo Ulug‘bek",
+"Zahiriddin Bobur",
+"Ibn Sino",
+"Muhammad al-Xorazmiy",
+"Al-Beruniy",
+"Ahmad al-Farg‘oniy",
+"Imom al-Buxoriy",
+"Imom at-Termiziy",
+"Ahmad Yassaviy",
+"Bahouddin Naqshband",
+"Najmiddin Kubro",
+"Mahmud Qoshg‘ariy",
+"Mahmud Zamaxshariy",
+"Abu Mansur Moturidiy",
+"Al-Farobiy",
+"Abdurauf Fitrat",
+"Abdulla Qodiriy",
+"Cho‘lpon",
+"Hamza Hakimzoda Niyoziy",
+"Munavvar Qori",
+"Mahmudxo‘ja Behbudiy",
+"Islom Karimov",
+"Sharof Rashidov",
+"Erkin Vohidov",
+"Abdulla Oripov",
+"Zulfiya",
+"Oybek",
+"G‘afur G‘ulom",
+"Ubaydulla Xo‘jayev",
+"Yusuf Xos Hojib",
+"Ahmad Donish",
+"Ogahiy",
+"Boborahim Mashrab",
+"Alisher Navoiy",
+"Komil Xorazmiy",
+"Turdi Farog‘iy",
+"Muqimiy",
+"Furqat",
+"Nodira",
+"Gulbadan Begim",
+"Shohruh Mirzo",
+"Ulug‘bek",
+"Temur Malik",
+"Jaloliddin Manguberdi",
+"Abu Rayhon Beruniy",
+"Ahmad Farg‘oniy",
+"Sulton Husayn Boyqaro",
+"Ali Qushchi",
+"Qutbiddin Sheroziy",
+"Abu Nasr Farobiy",
+"Abdulxoliq G‘ijduvoniy",
+"Najmiddin Kubro",
+"Sayyid Mir Kulol",
+"Mahdumi A’zam",
+"Khoja Ahror Vali",
+"Ahmad Yugnakiy",
+"Sakkokiy",
+"Lutfiy",
+"Bobur Mirzo",
+"Ubaydullaxon",
+"Abdullaxon II",
+"Muhammad Shayboniyxon",
+"Abulg‘ozi Bahodirxon",
+"Ogahiy",
+"Munis Xorazmiy",
+"Fitrat",
+"Cho‘lpon",
+"Usmon Nosir",
+"Hamid Olimjon",
+"Erkin Vohidov",
+"Abdulla Oripov",
+"Tohir Malik",
+"O‘tkir Hoshimov",
+"Pirimqul Qodirov",
+"Odil Yoqubov",
+"Ibrohim Haqqul",
+"Mirtemir",
+"Said Ahmad",
+"Askad Muxtor",
+"Shukur Xolmirzayev",
+"Omon Matjon",
+"Muhammad Yusuf",
+"Xurshid Davron",
+"Abdulla Avloniy",
+"Sadriddin Ayniy",
+"Hoji Muin",
+"Ubaydulla Ho‘jayev",
+"Behbudiy",
+"Munavvar Qori",
+"Yusuf Saryomiy",
+"Zokirjon Furqat",
+"Anbar Otin",
+"Uvaysiy"
+
+];
+
+const container = document.getElementById("container");
+
+bobolar.forEach(name => {
+
+const card = document.createElement("div");
+card.className="card";
+
+card.innerHTML = `
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/No_Image_Available.jpg/240px-No_Image_Available.jpg">
+<div class="name">${name}</div>
+`;
+
+card.onclick = () => {
+window.open("https://uz.wikipedia.org/wiki/"+name.replaceAll(" ","_"));
+};
+
+container.appendChild(card);
+
+});
+
+function searchPerson(){
+
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+
+let name=cards[i].innerText.toLowerCase();
+
+if(name.includes(input)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
